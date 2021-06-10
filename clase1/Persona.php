@@ -5,9 +5,19 @@
         private $nombre;
         private $apellido;
 
+        public function __construct($nombre, $apellido)
+        {
+            $this->setNombre($nombre);
+            $this->setApellido($apellido);
+        }
+
         public function verDatos()
         {
-            return 'método verDatos()';
+            $aux = 'Nombre: '.$this->getNombre();
+            $aux .= '<br>';
+            $aux .= 'Apellido: '.$this->getApellido();
+            $aux .= '<br>';
+            return $aux;
         }
 
         ############################
@@ -23,7 +33,7 @@
         /**
          * @param mixed $nombre
          */
-        public function setNombre($nombre)
+        private function setNombre($nombre)
         {
             $this->nombre = $nombre;
         }
@@ -39,7 +49,7 @@
         /**
          * @param mixed $apellido
          */
-        public function setApellido($apellido)
+        private function setApellido($apellido)
         {
             $this->apellido = $apellido;
         }

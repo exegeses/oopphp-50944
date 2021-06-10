@@ -1,8 +1,8 @@
 <?php
     require 'Persona.php';
-    $Persona = new Persona;
-    $Persona->setNombre('Charlie');
-    $Persona->setApellido('Watts');
+    $Persona = new Persona('Mick', 'Jagger');
+    //$Persona->setNombre('Charlie');
+    //$Persona->setApellido('Watts');
 ?>
 <!doctype html>
 <html lang="en">
