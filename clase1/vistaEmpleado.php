@@ -1,7 +1,8 @@
 <?php
     require 'Persona.php';
     require 'Empleado.php';
-    $Empleado = new Empleado('John', 'Galt');
+    $Empleado = new Empleado('John', 'Galt', 68465);
+    //$Empleado->setNLegajo(684358);
 ?>
 <!doctype html>
 <html lang="en">
