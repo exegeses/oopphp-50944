@@ -17,6 +17,23 @@
             return $regiones;
         }
 
+        public function verRegionPorID()
+        {
+            $regID = $_GET['regID'];
+            $link = Conexion::conectar();
+            $sql    = "SELECT regID, regNombre 
+                            FROM regiones
+                            WHERE regID = :regID";
+            $stmt   = $link->prepare($sql);
+            $stmt->bindParam(':regID', $regID, PDO::PARAM_INT);
+            $stmt->execute();
+            $region = $stmt->fetch();
+            //registramos valores de los atributos
+            $this->setRegID($region['regID']);
+            $this->setRegNombre($region['regNombre']);
+            return $this;
+        }
+        
         ####################################
         ### getters & setters
         /**
