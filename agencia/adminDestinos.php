@@ -1,5 +1,9 @@
 <?php
 //    require 'config/config.php';
+    require 'clases/Conexion.php';
+    require 'clases/Destino.php';
+    $Destino = new Destino;
+    $destinos = $Destino->listarDestinos();
     include 'includes/over-all-header.html';
     include 'includes/nav.php';
 ?>
@@ -24,14 +28,16 @@
             </tr>
             </thead>
             <tbody>
-
+        <?php
+            foreach ( $destinos as $destino ){
+        ?>
             <tr>
-                <td>id</td>
-                <td>nombre</td>
-                <td>region</td>
-                <td>$percio</td>
-                <td>asientos</td>
-                <td>disponibles</td>
+                <td><?= $destino['destID'] ?></td>
+                <td><?= $destino['destNombre'] ?></td>
+                <td><?= $destino['regNombre'] ?></td>
+                <td>$<?= $destino['destPrecio'] ?></td>
+                <td><?= $destino['destAsientos'] ?></td>
+                <td><?= $destino['destDisponibles'] ?></td>
                 <td>
                     <a href="formModificarDestino.php" class="btn btn-outline-secondary">
                         Modificar <i class="far fa-edit ml-1"></i>
@@ -43,7 +49,9 @@
                     </a>
                 </td>
             </tr>
-
+        <?php
+            }
+        ?>
             </tbody>
         </table>
 

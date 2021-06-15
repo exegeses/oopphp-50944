@@ -9,11 +9,13 @@
 
         static function conectar()
         {
-            self::$link = new PDO(
-                        'mysql:host=localhost;dbname=agencia',
-                        'root',
-                        'root'
-                    );
+            if( !isset( self::$link )  ){
+                self::$link = new PDO(
+                            'mysql:host=localhost;dbname=agencia',
+                            'root',
+                            'root'
+                        );
+            }
             return self::$link;
         }
     }
