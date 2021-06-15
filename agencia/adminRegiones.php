@@ -1,5 +1,9 @@
 <?php
 //    require 'config/config.php';
+    require 'clases/Conexion.php';
+    require 'clases/Region.php';
+    $Region = new Region;
+    $regiones = $Region->listarRegiones();
     include 'includes/over-all-header.html';
     include 'includes/nav.php';
 ?>
@@ -21,10 +25,12 @@
             </tr>
             </thead>
             <tbody>
-
+    <?php
+        foreach( $regiones as $region ){
+    ?>
             <tr>
-                <td> id </td>
-                <td> nombre </td>
+                <td><?= $region['regID'] ?></td>
+                <td><?= $region['regNombre'] ?></td>
                 <td>
                     <a href="formModificarRegion.php" class="btn btn-outline-secondary">
                         Modificar <i class="far fa-edit ml-1"></i>
@@ -36,7 +42,9 @@
                     </a>
                 </td>
             </tr>
-
+    <?php
+        }
+    ?>
             </tbody>
         </table>
 
