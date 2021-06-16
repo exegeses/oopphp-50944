@@ -16,6 +16,7 @@
                             'root'
                         );
             }
+            self::$link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             return self::$link;
         }
     }
