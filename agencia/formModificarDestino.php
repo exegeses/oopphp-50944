@@ -1,6 +1,13 @@
 <?php
 
     //require 'config/config.php';
+    require 'clases/Conexion.php';
+    require 'clases/Destino.php';
+    require 'clases/Region.php';
+    $Destino = new Destino;
+    $Destino->verDestinoPorID();
+    $Region = new Region;
+    $regiones = $Region->listarRegiones();
     include 'includes/over-all-header.html';
     include 'includes/nav.php';
 ?>
@@ -15,6 +22,7 @@
                     <div class="form-group">
                     <label for="destNombre">Nombre del Destino:</label>
                     <input type="text" name="destNombre" 
+                           value="<?= $Destino->getDestNombre(); ?>"
                            id="destNombre" class="form-control"
                            required>
                     </div>
@@ -23,7 +31,15 @@
                     <label for="regID">Región</label>
                     <select name="regID" id="regID" 
                             class="form-control" required>
-                        <option value="">Seleccione una región</option>
+
+                    <!--<option value="<?= $Destino->getRegID() ?>"><?= $Destino::getRegNombre() ?></option>-->
+            <?php
+                foreach ( $regiones as $region ){
+            ?>                        
+                        <option <?= ($region['regID']==$Destino->getRegID())?'selected':''; ?> value="<?= $region['regID'] ?>"><?= $region['regNombre'] ?></option>
+            <?php
+                }
+            ?>
                     </select>
                     </div>
 
@@ -33,6 +49,7 @@
                                 <div class="input-group-text">$</div>
                             </div>
                             <input type="number" name="destPrecio"
+                                   value="<?= $Destino->getDestPrecio(); ?>"
                                    class="form-control" placeholder="Ingrese el precio" required>
                         </div>
                     </div>
@@ -43,6 +60,7 @@
                                 <div class="input-group-text">#</div>
                             </div>
                             <input type="number" name="destAsientos"
+                                   value="<?= $Destino->getDestAsientos(); ?>"
                                    class="form-control" placeholder="Ingrese cantidad de Asientos Totales" required>
                         </div>
                     </div>
@@ -53,11 +71,13 @@
                                 <div class="input-group-text">#</div>
                             </div>
                             <input type="number" name="destDisponibles"
+                                   value="<?= $Destino->getDestDisponibles(); ?>"
                                    class="form-control" placeholder="Ingrese cantidad de Asientos Disponibles" required>
                         </div>
                     </div>
 
-
+                    <input type="hidden" name="destID"
+                           value="<?= $Destino->getDestID(); ?>">
                     <button class="btn btn-dark mr-3">Modificar destino</button>
                     <a href="adminDestinos.php" class="btn btn-outline-secondary">
                         Volver a panel de destinos

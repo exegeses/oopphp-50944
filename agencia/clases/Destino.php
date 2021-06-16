@@ -47,6 +47,7 @@
                          AND destID = :destID";
             $stmt = $link->prepare($sql);
             $stmt->bindParam(':destID', $destID, PDO::PARAM_INT);
+            $stmt->execute();
             $destino = $stmt->fetch();
             //registrar todos los atributos
             $this->setDestID($destino['destID']);
