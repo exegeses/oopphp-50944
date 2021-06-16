@@ -1,9 +1,6 @@
 <?php
 
-    //require 'config/config.php';
-    require 'clases/Conexion.php';
-    require 'clases/Destino.php';
-    require 'clases/Region.php';
+    require 'config/config.php';
     $Destino = new Destino;
     $Destino->verDestinoPorID();
     $Region = new Region;
