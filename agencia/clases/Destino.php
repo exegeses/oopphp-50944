@@ -31,7 +31,34 @@
             return $destinos;
         }
 
-
+        public function verDestinoPorID()
+        {
+            $destID = $_GET['destID'];
+            $link = Conexion::conectar();
+            $sql = "SELECT 
+                            destID,  
+                            destNombre,
+                            D.regID, regNombre,
+                            destPrecio,
+                            destAsientos, destDisponibles,
+                            destActivo
+                        FROM destinos D, regiones R 
+                        WHERE R.regID = D.regID
+                         AND destID = :destID";
+            $stmt = $link->prepare($sql);
+            $stmt->bindParam(':destID', $destID, PDO::PARAM_INT);
+            $destino = $stmt->fetch();
+            //registrar todos los atributos
+            $this->setDestID($destino['destID']);
+            $this->setDestNombre($destino['destNombre']);
+            $this->setRegID($destino['regID']);
+            self::setRegNombre($destino['regNombre']);
+            $this->setDestPrecio($destino['destPrecio']);
+            $this->setDestAsientos($destino['destAsientos']);
+            $this->setDestDisponibles($destino['destDisponibles']);
+            $this->setDestActivo($destino['destActivo']);
+            return $this;
+        }
 
         ##################################
         ##### getters && setters
