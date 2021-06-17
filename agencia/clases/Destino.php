@@ -85,6 +85,7 @@
             $stmt->bindParam(':destPrecio', $destPrecio, PDO::PARAM_INT);
             $stmt->bindParam(':destAsientos', $destAsientos, PDO::PARAM_INT);
             $stmt->bindParam(':destDisponibles', $destDisponibles, PDO::PARAM_INT);
+            $stmt->bindParam(':destID', $destID, PDO::PARAM_INT);
             if( $stmt->execute() ){
                 $this->setDestID( $destID );
                 $this->setDestNombre( $destNombre );
