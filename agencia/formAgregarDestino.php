@@ -1,6 +1,8 @@
 <?php
 
-    //require 'config/config.php';
+    require 'config/config.php';
+    $Region = new Region;
+    $regiones = $Region->listarRegiones();
     include 'includes/over-all-header.html';
     include 'includes/nav.php';
 ?>
@@ -24,6 +26,14 @@
                     <select name="regID" id="regID" 
                             class="form-control" required>
                         <option value="">Seleccione una región</option>
+            <?php
+                foreach ( $regiones as $region ){
+            ?>
+                        <option value="<?= $region['regID'] ?>"><?= $region['regNombre'] ?></option>
+            <?php
+                }
+            ?>
+
                     </select>
                     </div>
 
@@ -56,7 +66,6 @@
                                    class="form-control" placeholder="Ingrese cantidad de Asientos Disponibles" required>
                         </div>
                     </div>
-
 
                     <button class="btn btn-dark mr-3">Agregar destino</button>
                     <a href="adminDestinos.php" class="btn btn-outline-secondary">
