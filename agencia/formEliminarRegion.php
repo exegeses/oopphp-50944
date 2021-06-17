@@ -10,7 +10,7 @@
     <main class="container">
 
         <h1>Baja de una región</h1>
-        <div class="alert alert-danger p-3">
+        <div class="alert alert-danger col-8 mx-auto p-3">
             <a href="adminRegiones.php" class="btn btn-light">
                 Volver a panel
             </a>

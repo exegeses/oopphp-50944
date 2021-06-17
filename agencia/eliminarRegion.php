@@ -1,13 +1,13 @@
 <?php
     require 'config/config.php';
     $Region = new Region;
-    $chequeo = $Region->modificarRegion();
+    $chequeo = $Region->eliminarRegion();
 
     $css = 'danger';
-    $mensaje = 'No se pudo modificar la región';
+    $mensaje = 'No se pudo eliminar la región';
     if( $chequeo ){
         $css = 'success';
-        $mensaje = 'Región '.$Region->getRegNombre().' modificada correctamente';
+        $mensaje = 'Región '.$Region->getRegNombre().' eliminada correctamente';
     }
 
     include 'includes/over-all-header.html';
@@ -16,7 +16,7 @@
 
     <main class="container">
 
-        <h1>Modificación de una región</h1>
+        <h1>Baja de una región</h1>
 
         <div class="alert alert-<?= $css ?>">
             <?= $mensaje ?>

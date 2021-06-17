@@ -1,6 +1,5 @@
 <?php
-
-    //require 'config/config.php';
+    require 'config/config.php';
     include 'includes/over-all-header.html';
     include 'includes/nav.php';
 ?>
@@ -25,7 +24,6 @@
                 </form>
 
             </div>
-
 
     </main>
 <?php
